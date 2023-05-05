@@ -1,3 +1,2 @@
 Adding from VS
-Modifying from GitHub! And from VS
-Hopefully this works
+Added from VS and GitHub. Conflict resolved
