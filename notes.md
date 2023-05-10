@@ -17,4 +17,11 @@
     <!-- this is a comment -->
     &lt; how to use less than
     &gt; how to use greater than
+### HTML Structure Elements Assign ###
+   * <img src="url" alt="alternatetext">
+   * How to tag a url (already in class notes)
+   * h1 - h9 You can use these for headers
+   * <a href="https://byu.edu">BYU</a>
+   * The BYU part is what shows as the link you click on
+   * closing tag has /
     
