@@ -24,4 +24,7 @@
    * <a href="https://byu.edu">BYU</a>
    * The BYU part is what shows as the link you click on
    * closing tag has /
-    
+### Playing With Simon HTML ###
+   - You can just type in pretty much whatever color you want
+   - Save for the stuff to show up on live server
+   - Don'tworry about things looking really pretty in HTML
