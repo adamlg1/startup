@@ -8,27 +8,22 @@ Have you ever been frustrated by your family’s inability to figure out what is
 
 ### Design
 
-![Mock](voterMockUI.jpg)
+![startupSketch](startupSketch.jpg)
 
 ### Key features
 
 - Secure login over HTTPS
-- Ability to select 
-- Display of choices
-- Totals from all users displayed in realtime
-- Ability for a user to lock in their top three
-- Results are persistently stored
-- Ability for admin to create and delete questions
+- Messages from all users displayed in realtime
+- Ability for a user to submit a tip
+- Messages are persistently stored
+- Ability for admin to delete bad tips
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - 
-- **CSS** -
-- **JavaScript** - 
-- **Service** - 
+
 - **DB** - Store users, messages, and tips in database.
 - **Login** - Register and login users. Credentials securely stored in database. Can't chat or add tips without authentication.
 - **WebSocket** - Peer to peer communication through chatting with friends through the browser, and the ability to submit a tip that is broadcasted for others to see.
-- **React** -
+
