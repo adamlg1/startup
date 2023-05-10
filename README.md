@@ -8,7 +8,7 @@ Have you ever been frustrated by your family’s inability to figure out what is
 
 ### Design
 
-![startupSketch](startupSketch.jpg)
+![startupSketch](startupSketch.JPG)
 
 ### Key features
 
