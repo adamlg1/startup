@@ -32,3 +32,7 @@
 - Commit after each page
 - It is just for structure, it's not meant to be pretty.
 - Next time I would probably even make it more simple.
+### CSS Intro ###
+- Defined by boxes
+- Use to make website look more pretty
+- Still evolving
