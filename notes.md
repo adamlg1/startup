@@ -28,3 +28,7 @@
    - You can just type in pretty much whatever color you want
    - Save for the stuff to show up on live server
    - Don'tworry about things looking really pretty in HTML
+### HTML Startup ###
+- Commit after each page
+- It is just for structure, it's not meant to be pretty.
+- Next time I would probably even make it more simple.
