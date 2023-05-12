@@ -40,4 +40,7 @@
 - Font-weight can change how bold the text is.
 - You can use padding for spacing.
 - pals before marriage
-- 
+### CSS Responsive Reading ###
+- include meta tag in the head element of all your HTML
+- Prevents a lot of pain using phones
+- fr is fractional unit
