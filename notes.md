@@ -36,3 +36,8 @@
 - Defined by boxes
 - Use to make website look more pretty
 - Still evolving
+### CSS Practice ###
+- Font-weight can change how bold the text is.
+- You can use padding for spacing.
+- pals before marriage
+- 
