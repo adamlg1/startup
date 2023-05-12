@@ -44,3 +44,9 @@
 - include meta tag in the head element of all your HTML
 - Prevents a lot of pain using phones
 - fr is fractional unit
+### CSS Flex Assignment ###
+- Start with display: flex;
+- You can manipulate using justify-content, and align-items.
+- center, start (left), end (right)
+- box-sizing: border-box; includes border in box size.
+- flex: 1; Each element will be its span, but the element with flex: 1 will get given the rest of the room
