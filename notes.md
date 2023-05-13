@@ -50,3 +50,6 @@
 - center, start (left), end (right)
 - box-sizing: border-box; includes border in box size.
 - flex: 1; Each element will be its span, but the element with flex: 1 will get given the rest of the room
+### Simon CSS ###
+-  I changed a lot of the colors in Simon. I also adjusted some view heights, and padding to see what would happen.
+-  I made the scores chart heading light mode instead of dark.
