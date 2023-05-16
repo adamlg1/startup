@@ -1,0 +1,9 @@
+nav.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    flex: 1;
+}
+footer a {
+    float: right;
+}
