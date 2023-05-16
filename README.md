@@ -1,10 +1,10 @@
-# Gluten-Free Griffdawg
+# Gluten-Free Chat
 
 ## Description deliverable - Startup Specification
 
 ### Elevator pitch
 
-Have you ever been frustrated by your family’s inability to figure out what is and is not gluten-free, or had well-intentioned relatives feed you food that doesn’t agree with your diet, or arrived at a dinner only to find out you cannot eat anything? The Gluten-Free Griffdawg application helps to solve many of these problems. Family can message to ask questions in a chat setting, add tips of what they have learned cooking, and not have to feel so unsure when cooking for someone on a gluten-free diet. Questions in the chat can be answered in realtime, and all members can benefit from each other’s knowledge by adding tips. In a family with gluten-free members, the Gluten-Free Griffdawg app is a must to eliminate the confusion caused by ineffective google searches, and lack of knowledge surrounding what constitutes as gluten-free.
+Have you ever been frustrated by your family’s inability to figure out what is and is not gluten-free, or had well-intentioned relatives feed you food that doesn’t agree with your diet, or arrived at a dinner only to find out you cannot eat anything? The Gluten-Free Chat application helps to solve many of these problems. Family can message to ask questions in a chat setting, add tips of what they have learned cooking, and not have to feel so unsure when cooking for someone on a gluten-free diet. Questions in the chat can be answered in realtime, and all members can benefit from each other’s knowledge by adding tips. In a family with gluten-free members, the Gluten-Free Chat app is a must to eliminate the confusion caused by ineffective google searches, and lack of knowledge surrounding what constitutes as gluten-free.
 
 ### Design
 
@@ -23,6 +23,7 @@ Have you ever been frustrated by your family’s inability to figure out what is
 I am going to use the required technologies in the following ways.
 
 - **HTML** - Uses correct HTML structure for application. Four HTML pages. One for login, tips, chat, and an informational about page. Hyperlinks through a consistent header.
+- **CSS** - Application styling that looks good on different screen sizes, uses good whitespace, color choice and contrast.
 - **DB** - Store users, messages, and tips in database.
 - **Login** - Register and login users. Credentials securely stored in database. Can't chat or add tips without authentication.
 - **WebSocket** - Peer to peer communication through chatting with friends through the browser, and the ability to submit a tip that is broadcasted for others to see.
@@ -39,4 +40,15 @@ For this deliverable I added the application structure.
 - **Login** - Input box and submit button for login.
 - **Database** - The old chat messages and old tips represent data pulled from the database.
 - **WebSocket** - The chat box and tip box represent the ability to send/submit realtime messages/tips.
+
+## CSS deliverable
+
+For this deliverable I properly styled the application into its final appearance.
+
+- **Header, footer, and main content body** - There is a consistent header and footer throughout each page of the application. The main content body adjusts to fit many  different devices.
+- **Navigation elements** - I used a drop-down menu that is accessible from each page. The logo in the top left can also be clicked to navigate back to the home page, with an additional link in the description on the about page.
+- **Responsive to window resizing** - My app looks great on all window sizes and devices
+- **Application elements** - Used good contrast and whitespace
+- **Application text content** - Consistent fonts.
+- **Application images** - There is a logo in the header, and two pictures on the about page.
 
