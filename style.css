@@ -1,3 +1,40 @@
-header {
-    flex: 0 90px;
+
+nav.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    flex: 1;
 }
+
+nav.button {
+    align-items: right;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+}
+
+main {
+    display: flex;
+    flex: 1 calc(100vh - 120px);
+    flex-direction: column;
+    text-align: center !important;
+    justify-content: center;
+}
+
+footer a {
+    float: right;
+}
+@media (max-height: 600px) {
+    header {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+    main {
+      flex: 1 100vh;
+    }
+  }
