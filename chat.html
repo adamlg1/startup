@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gluten-Free Griffin</title>
     <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="chat.css" />
   </head>
 
   <header>
@@ -21,21 +23,17 @@
         <li><a href="about.html">About</a></li>
       </menu>
     </nav>
-
-    <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-    <hr />
+  </header>
+  <main>
     <div class="users">
         User:
         <span class="user-name">Current User</span>
+        <div id="active-status">
+          <div class="user-name"><span class="active-users"></span>Joe is active<div>
+          <div class="user-name"><span class="active-users"></span>Bob is active</div>
+          <div class="user-name"><span class="active-users"></span>Tim is active</div>
       </div>
-    <ul class="notification">
-        <li class="user-name">Joe is active</li>
-        <li class="user-name">Bob is active</li>
-        <li class="user-name">Tim is active</li>
-      </ul>
-
-</header>
-<main>
+    </div>
   <div class="message1">
     <p>Bob: Is Soy Sauce gluten-free?</p>
     <span class="timeSent">sent at 12:00</span>
@@ -44,9 +42,8 @@
     <p>Tim: No. You have to buy gluten-free soy sauce.</p>
     <span class="timeSent">sent at 12:05</span>
 </div>
-  <label for="messages"></label>
+  <label for="messages" class="typeHere"></label>
   <input type="text" id="text" name="varText" placeholder="type message here" />
-</div>
 </main>
 
     
