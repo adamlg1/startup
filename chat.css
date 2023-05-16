@@ -8,6 +8,11 @@ nav.title {
 nav.button {
     align-items: right;
 }
+main {
+    display: flex;
+    flex: 1 calc(100vh - 120px);
+    flex-direction: column;
+}
 .chat-title {
     text-align: center;
 }
@@ -50,7 +55,32 @@ nav.button {
 }
 
 .chat-label {
-    border:rgb(90, 4, 230);
+    padding-top: 1em;
     text-align: right;
-    margin-bottom: 2em;
+    padding-bottom: 1em;
 }
+footer {
+    border-top: 1em;
+    flex: 0 30px;
+}
+footer a {
+    float: right;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+}
+
+@media (max-height: 600px) {
+    header {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+    main {
+      flex: 1 100vh;
+    }
+  }
