@@ -53,3 +53,11 @@
 ### Simon CSS ###
 -  I changed a lot of the colors in Simon. I also adjusted some view heights, and padding to see what would happen.
 -  I made the scores chart heading light mode instead of dark.
+### Startup CSS ###
+- Make sure you have the latest version of bootsrap. Usually, the first one you google is not actually the latest version.
+- You can add a border on top, bottom, left, or right.
+- Padding can help with spacing.
+- You can include a picture directly in your header, and even have a link connected to it.
+- Make sure you have colons if things don't work.
+- Use the debugger with all the different devices to see if your app actually works on all of them.
+- Bootstrap is your friend.
