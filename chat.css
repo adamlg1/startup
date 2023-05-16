@@ -1,3 +1,16 @@
+nav.title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    flex: 1;
+}
+
+nav.button {
+    align-items: right;
+}
+.chat-title {
+    text-align: center;
+}
 .users {
     flex: 1;
     width: 100%;
@@ -5,6 +18,13 @@
 
 .user-name {
     color: rgb(115, 249, 133);
+}
+.user-title {
+    background-color: rgb(115, 249, 133);
+}
+.active-title {
+    background-color: green;
+    color:rgb(115, 249, 133);
 }
 #active-status {
     padding-top: .5em;
@@ -17,6 +37,7 @@
     margin-right: 8em;
     align-items: left;
     border-radius: 10px;
+    margin-top: 1em;
 }
 
 .message2 {
@@ -28,6 +49,8 @@
     margin-left: 8em;
 }
 
-.typeHere {
+.chat-label {
     border:rgb(90, 4, 230);
+    text-align: right;
+    margin-bottom: 2em;
 }
