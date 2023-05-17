@@ -61,3 +61,5 @@
 - Make sure you have colons if things don't work.
 - Use the debugger with all the different devices to see if your app actually works on all of them.
 - Bootstrap is your friend.
+### Javascript Array Assignment ###
+- Use the arrow function to take up less space.
