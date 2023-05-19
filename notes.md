@@ -63,3 +63,7 @@
 - Bootstrap is your friend.
 ### Javascript Array Assignment ###
 - Use the arrow function to take up less space.
+### Javascript DOM ###
+- "The conditional (ternary) operator is the only JavaScript operator that takes three operands: a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy. This operator is frequently used as an alternative to an if...else statement." - Mdn
+- Syntax: condition ? exprIfTrue : exprIfFalse
+
