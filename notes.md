@@ -66,4 +66,9 @@
 ### Javascript DOM ###
 - "The conditional (ternary) operator is the only JavaScript operator that takes three operands: a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy. This operator is frequently used as an alternative to an if...else statement." - Mdn
 - Syntax: condition ? exprIfTrue : exprIfFalse
+### Debugging Javascript ###
+- Using console log statements
+- By writing one block of code at a time and debuggging throughout
+- You can use the debugger console window to inspect variables without using the console.log function from your code
+- You can set a breakpoint, then refresh the browser. Using the mouse, you are able to see the values of variables at that point.
 
