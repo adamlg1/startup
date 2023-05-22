@@ -71,4 +71,6 @@
 - By writing one block of code at a time and debuggging throughout
 - You can use the debugger console window to inspect variables without using the console.log function from your code
 - You can set a breakpoint, then refresh the browser. Using the mouse, you are able to see the values of variables at that point.
+### Simon Javascript ###
+- Dark simon looks a lot cooler
 
