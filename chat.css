@@ -21,7 +21,7 @@ main {
     width: 100%;
 }
 
-.user-name {
+.user-name, .active-status {
     color: rgb(115, 249, 133);
 }
 .user-title {
@@ -30,9 +30,10 @@ main {
 .active-title {
     background-color: green;
     color:rgb(115, 249, 133);
+    margin-top: .5em;
 }
 #active-status {
-    padding-top: .5em;
+    padding-bottom: .5em;
 }
 .message1 {
     background-color: rgb(115, 249, 133);
