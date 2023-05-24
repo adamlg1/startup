@@ -35,7 +35,7 @@ main {
 #active-status {
     padding-bottom: .5em;
 }
-.message1 {
+.message1, .messages {
     background-color: rgb(115, 249, 133);
     color: white;
     text-align: left;
@@ -60,6 +60,7 @@ main {
     text-align: right;
     padding-bottom: 1em;
 }
+
 footer {
     border-top: 1em;
     flex: 0 30px;
