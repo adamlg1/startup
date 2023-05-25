@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', function()
       //need to add the tips to the array
       tipsArray.push(newTip);
 
+
+      //save the tips to local storage
+      localStorage.setItem('tipsArray', JSON.stringify(tipsArray));
+
+
       /** console.log(tipsArray); 
        * checked to see if tips were added to the array
        */
