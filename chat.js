@@ -26,6 +26,15 @@ function purpleChatBubbleGenerator(user, text)
     greenChatBubbleGenerator("Jim-E", "I like to party"),
     5000);
 
+    //create elements
+    const messageObj = 
+    {
+        user: user,
+        text: text,
+        time: retrieveTheTime()
+    };
+    //push them onto the object
+    storeMessages.push(messageObj);
 }
 
 //Gets the text
@@ -77,4 +86,8 @@ function greenChatBubbleGenerator(user, text)
     messageHolder.appendChild(division);
 
 }
+
+//fake database
+const storeMessages = [];
+
 
