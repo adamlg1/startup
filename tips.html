@@ -12,7 +12,7 @@
   </head>
 
   <header>
-
+    <!--Bootstrap Header-->
     <nav class="navbar" style="background-color: #e3f2fd;">
       <div class="container-fluid">
          <a class="navbar-brand" href="index.html">
@@ -39,40 +39,47 @@
             </li>
           </ul>
 </header>
-<main class="list-group">
+
+<!--Main-->
+<main class="list-group bg-light">
   <h1>Tips</h1>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Bob</h5>
-      <small>2 days ago</small>
-    </div>
-    <p class="mb-1">You have to buy gluten-free oats, regular Quaker Oats are not okay.</p>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Joe</h5>
-      <small class="text-muted">Posted at 7:05</small>
-    </div>
-    <p class="mb-1">Do not use the same spoon to mix regular spaghetti as with the gluten-free spaghetti!</p>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">Grandma</h5>
-      <small class="text-muted">Posted at 10:07</small>
-    </div>
-    <p class="mb-1">I just found a great deal on pretzels from Smiths.</p>
-  </a>
-</div>
 
-    <div class="tip-label">
-        <label for="tips"></label>
-        <input type="text" id="text" name="varText" placeholder="Add your tip here!" />
-      </div>   
+  <!--Bootstrap List-->
+  <div id="tips">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Bob</h5>
+        <small>2 days ago</small>
+      </div>
+      <p class="mb-1">You have to buy gluten-free oats, regular Quaker Oats are not okay.</p>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Joe</h5>
+        <small class="text-muted">Posted at 7:05</small>
+      </div>
+      <p class="mb-1">Do not use the same spoon to mix regular spaghetti as with the gluten-free spaghetti!</p>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Grandma</h5>
+        <small class="text-muted">Posted at 10:07</small>
+      </div>
+      <p class="mb-1">I just found a great deal on pretzels from Smiths.</p>
+    </a>
+  </div>
 
+<!--Tip Typing Box-->
+  <div class="tip-label">
+    <label for="tipText"></label>
+    <input type="text" id="tipText" name="varText" placeholder="Add your tip here!" />
+    <button id="submit">Submit</button>
+  </div>   
 </main>
 
 
 
+<!--Footer-->
 <footer class="text-muted" style="background-color: #e3f2fd;" >
   <div class="container-fluid" >
     <span class="text-reset">Adam Griffin</span>
