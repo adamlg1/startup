@@ -1,6 +1,7 @@
 //Gets Username
 const userNameTitleThingy = document.querySelector(".user-title");
 userNameTitleThingy.innerText = localStorage.getItem("userName");
+userName = localStorage.getItem("userName");
 
 
 //Makes the purple chat bubbles :)
@@ -20,11 +21,6 @@ function purpleChatBubbleGenerator(user, text)
     message2.appendChild(paragraph);
     message2.appendChild(timeVar);
     messageHolder.appendChild(message2);
-
-    //Fake Responses lol
-    setTimeout(
-    greenChatBubbleGenerator("Jim-E", "I like to party"),
-    5000);
 
     //create elements
     const messageObj = 
@@ -60,11 +56,19 @@ function retrieveTheTime()
     return `${hours}:${minutes}`;
 }
 
+function makeFakeMessage() 
+{
+    //Fake Responses lol
+    setTimeout(
+        greenChatBubbleGenerator("Jim-E", "I like to party"),
+        7000);
+}
+
 //Makes Button work
 const sendBtn = document.getElementById("send");
 sendBtn.addEventListener("click", function ()
 {
-    return purpleChatBubbleGenerator(localStorage.getItem("userName"), retrieveTheStupidText());
+    return purpleChatBubbleGenerator(localStorage.getItem("userName"), retrieveTheStupidText()), makeFakeMessage();
 });
 
 
@@ -116,4 +120,23 @@ setInterval(() => {
     chatText.innerHTML =
       `<div class="event"><span class="user-name">Joe</span> is active</div>` + chatText.innerHTML;
   }, 10000);
+
+
+  //generates the previous messages
+  function generatePreviousMessages() 
+  {
+    let messages = JSON.parse(localStorage.getItem("messages"));
+    for (i of messages)
+    {
+     if (i.user === userName)
+     {
+        purpleChatBubbleGenerator(i.user, i.text);
+     } else 
+     {
+        greenChatBubbleGenerator(i.user, i.text);
+     }
+    }
+}
+
+  generatePreviousMessages();
 
