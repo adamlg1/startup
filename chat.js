@@ -33,8 +33,12 @@ function purpleChatBubbleGenerator(user, text)
         text: text,
         time: retrieveTheTime()
     };
+    
     //push them onto the object
     storeMessages.push(messageObj);
+
+    //save them in local storage
+    localStorage.setItem("messages", JSON.stringify(storeMessages));
 }
 
 //Gets the text
