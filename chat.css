@@ -55,7 +55,13 @@ main {
     margin-left: 8em;
 }
 
-.chat-label {
+
+.anotherSpacerWooo {
+    height: 10px;
+    background-color: secondary;
+}
+
+.chat-input {
     padding-top: 1em;
     text-align: right;
     padding-bottom: 1em;
