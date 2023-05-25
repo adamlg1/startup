@@ -33,7 +33,7 @@ function purpleChatBubbleGenerator(user, text)
         text: text,
         time: retrieveTheTime()
     };
-    
+
     //push them onto the object
     storeMessages.push(messageObj);
 
@@ -89,9 +89,31 @@ function greenChatBubbleGenerator(user, text)
     messageHolder.appendChild(message1);
     messageHolder.appendChild(division);
 
+    //create elements
+    const messageObj = 
+    {
+        user: user,
+        text: text,
+        time: retrieveTheTime()
+    };
+    
+    //push them onto the object
+    storeMessages.push(messageObj);
+
+    //save them in local storage
+    localStorage.setItem("messages", JSON.stringify(storeMessages));
+
 }
+
 
 //fake database
 const storeMessages = [];
 
+
+//Generates an active user every 10 seconds. Go Joe Ingles
+setInterval(() => {
+    const chatText = document.querySelector('#active-status');
+    chatText.innerHTML =
+      `<div class="event"><span class="user-name">Joe</span> is active</div>` + chatText.innerHTML;
+  }, 10000);
 
