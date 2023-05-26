@@ -53,7 +53,7 @@ For this deliverable I properly styled the application into its final appearance
 - **Application text content** - Consistent fonts.
 - **Application images** - There is a logo in the header, and two pictures on the about page.
 
-### Javascript Deliverable
+### Javascript Deliverable ###
 
 For this deliverable I added the javascript functionality.
 - Takes username as a place for future login. Displays username on chat screen.
