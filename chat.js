@@ -1,7 +1,16 @@
+//fake database
+let storeMessages;
+if (JSON.parse(localStorage.getItem("messages")) === null) {
+    storeMessages  = [];
+}
+else {
+    storeMessages = JSON.parse(localStorage.getItem("messages"));
+    console.log(storeMessages);
+}
 //Gets Username
 const userNameTitleThingy = document.querySelector(".user-title");
 userNameTitleThingy.innerText = localStorage.getItem("userName");
-userName = localStorage.getItem("userName");
+const userName = localStorage.getItem("userName");
 
 
 //Makes the purple chat bubbles :)
@@ -42,7 +51,6 @@ function retrieveTheStupidText()
 {
     const inputText = document.getElementById("typed-message");
     const retrievedText = inputText.value;
-    console.log(retrievedText);
     inputText.value = '';
     return retrievedText;
 }
@@ -110,9 +118,44 @@ function greenChatBubbleGenerator(user, text)
 }
 
 
-//fake database
-const storeMessages = [];
+function purpleOld(user, text) 
+{
+    const message2 = document.createElement("div");
+    message2.className = "message2";
+    const paragraph = document.createElement("p");
+    paragraph.innerText = user + ": " + text;
+    const timeVar = document.createElement('span');
+    timeVar.innerText = "Sent at " + retrieveTheTime();
 
+    //adds into the DOM lets gooooo
+    const messageHolder = document.getElementById("messages");
+
+    //puts them into elements in the DOM so they show up thanks Jim-E
+    message2.appendChild(paragraph);
+    message2.appendChild(timeVar);
+    messageHolder.appendChild(message2);
+}
+
+function greenOld(user, text)
+{
+    const message1 = document.createElement("div");
+    message1.className = "message1";
+    const paragraph = document.createElement("p");
+    paragraph.innerText = user + ": " + text;
+    const timeVar = document.createElement('span');
+    timeVar.innerText = "Sent at " + retrieveTheTime();
+    const division = document.createElement('div');
+    division.className = "anotherSpacerWooo";
+
+    //adds into the DOM lets gooooo
+    const messageHolder = document.getElementById("messages");
+
+    //puts them into elements in the DOM so they show up thanks Jim-E
+    message1.appendChild(paragraph);
+    message1.appendChild(timeVar);
+    messageHolder.appendChild(message1);
+    messageHolder.appendChild(division);
+}
 
 //Generates an active user every 10 seconds. Go Joe Ingles
 setInterval(() => {
@@ -130,13 +173,16 @@ setInterval(() => {
     {
      if (i.user === userName)
      {
-        purpleChatBubbleGenerator(i.user, i.text);
-     } else 
+        purpleOld(i.user, i.text);
+     } 
+     
+     else 
      {
-        greenChatBubbleGenerator(i.user, i.text);
+        greenOld(i.user, i.text);
      }
     }
+
 }
 
-  generatePreviousMessages();
+generatePreviousMessages();
 
