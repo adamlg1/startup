@@ -23,6 +23,7 @@ Have you ever been frustrated by your family’s inability to figure out what is
 I am going to use the required technologies in the following ways.
 
 - **HTML** - Uses correct HTML structure for application. Four HTML pages. One for login, tips, chat, and an informational about page. Hyperlinks through a consistent header.
+- ***Javascript*** - Uses Javascript for buttons and navigation to work.
 - **CSS** - Application styling that looks good on different screen sizes, uses good whitespace, color choice and contrast.
 - **DB** - Store users, messages, and tips in database.
 - **Login** - Register and login users. Credentials securely stored in database. Can't chat or add tips without authentication.
@@ -51,4 +52,12 @@ For this deliverable I properly styled the application into its final appearance
 - **Application elements** - Used good contrast and whitespace
 - **Application text content** - Consistent fonts.
 - **Application images** - There is a logo in the header, and two pictures on the about page.
+
+### Javascript Deliverable
+
+For this deliverable I added the javascript functionality.
+- Takes username as a place for future login. Displays username on chat screen.
+- Has two array/object acting as the database. Stores messages and tips typed. Injects the data into the DOM.
+- On the chat page, the websocket is mocked by displaying a user every 10 seconds, and a mock response is made to each message.
+- Javascript supports applications interaction logic.
 
