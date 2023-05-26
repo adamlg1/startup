@@ -73,4 +73,9 @@
 - You can set a breakpoint, then refresh the browser. Using the mouse, you are able to see the values of variables at that point.
 ### Simon Javascript ###
 - Dark simon looks a lot cooler
-
+### Javascript Startup ###
+- Don't do a  function with no (), it is not fun.
+- Fix one thing, then a world of pain comes.
+- Call your friends, because after 10 hours of trying you should take a break.
+- Java don't care, but it also not caring brings some pain becasue it doens't show errors.
+- I had to put in an if else for when the array was empty.
