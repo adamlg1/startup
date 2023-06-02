@@ -28,6 +28,10 @@ I am going to use the required technologies in the following ways.
 - **DB** - Store users, messages, and tips in database.
 - **Login** - Register and login users. Credentials securely stored in database. Can't chat or add tips without authentication.
 - **WebSocket** - Peer to peer communication through chatting with friends through the browser, and the ability to submit a tip that is broadcasted for others to see.
+- **Service** - Backend service with endpoints for:
+- login
+- retrieving messages
+- retrieving tips
 
 
 ## HTML deliverable
@@ -61,4 +65,14 @@ For this deliverable I added the javascript functionality.
 - Has two array/object acting as the database. Stores messages and tips typed. Injects the data into the DOM.
 - On the chat page, the websocket is mocked by displaying a user every 10 seconds, and a mock response is made to each message.
 - Javascript supports applications interaction logic.
+
+### Service Deliverable
+
+For this deliverable I created a HTTP service to host my frontend and provide backend endpoints.
+
+- Node.js/Express HTTP service - done!
+- Static middleware for frontend - done!
+- Calls to third party endpoints - Generates a random featured user on the about page using fetch.
+- Backend service endpoints - Placeholders for login that stores the current user on the server, endpoints for chat and tips.
+- Frontend calls service endpoints - Frontend interacts with messages, tips and message endpoints. 
 
