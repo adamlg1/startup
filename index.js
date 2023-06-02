@@ -40,22 +40,23 @@ apiRouter.post('/message', (req, res) => {
     res.status(200).json({ message: 'Message sent successfully' });
   });
   
-// Login Placeholder (doesn't actually authenticate yet or really do much, look forward to that next week)
+// Login Placeholder. Interacts with frontend, displays error if left blank
 apiRouter.post('/login', (req, res) => {
-    const {username} = req.body;
+  const { username } = req.body;
 
-    //check if they typed a username
-    if(!username) {
-        res.status(400).json({message: 'username is required'});
-        return;
-        const user = {
-            id: 1,
-            username: 'placeholder',
-        };
+  // Check if they typed a username
+  if (!username) {
+    return res.status(400).json({ message: 'username is required' });
+  }
 
-        res.json({ user });
-    }
+  const user = {
+    id: 1,
+    username: 'placeholder',
+  };
+
+  res.json({ user });
 });
+
 
 // Tips
 apiRouter.get('/tips', (_req, res) => {
