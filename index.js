@@ -21,9 +21,40 @@ apiRouter.get('/messages', (_req, res) =>  {
 });
 
 // SubmitMessage
-apiRouter.post('/message', (_req, res) =>  {
-    messages = updateMessages(req.body, messages);
-    res.send(messages);
+apiRouter.post('/message', (req, res) => {
+    const { user, text, time } = req.body;
+  
+    if (!user || !text || !time) {
+      res.status(400).json({ message: 'Not a valid message' });
+      return;
+    }
+  
+    const message = {
+      user,
+      text,
+      time
+    };
+  
+    messages.push(message);
+  
+    res.status(200).json({ message: 'Message sent successfully' });
+  });
+  
+// Login Placeholder (doesn't actually authenticate yet or really do much, look forward to that next week)
+apiRouter.post('/login', (req, res) => {
+    const {username} = req.body;
+
+    //check if they typed a username
+    if(!username) {
+        res.status(400).json({message: 'username is required'});
+        return;
+        const user = {
+            id: 1,
+            username: 'placeholder',
+        };
+
+        res.json({ user });
+    }
 });
 
 // Tips
@@ -42,4 +73,6 @@ app.use((_req, res) =>
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
+
+  
 

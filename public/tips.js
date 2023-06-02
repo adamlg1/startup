@@ -43,6 +43,24 @@ else {
         /** console.log(tipsArray); 
          * checked to see if tips were added to the array
          */
+        // Make an HTTP POST request to submit the tip
+    fetch('/api/tips', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTip),
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the response data
+          console.log(data);
+          // Process the response if needed
+        })
+        .catch(error => {
+          // Handle any errors that occurred during the request
+          console.error('Error:', error);
+        });
 
         // Makes new list item
         const newItem = document.createElement('a');
