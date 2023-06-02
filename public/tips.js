@@ -126,4 +126,5 @@ function generatePreviousTips()
         document.getElementById('tips').appendChild(newItem);
 
     }
-}
+
+  }

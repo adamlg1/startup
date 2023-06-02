@@ -1,3 +1,11 @@
+const nameEl = document.querySelector("#name");
+nameEl.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    login();
+  }
+});
+
 function login() {
     const nameEl = document.querySelector("#name");
     const username = nameEl.value; // Get the username value
@@ -28,3 +36,4 @@ function login() {
       });
   }
   
+
