@@ -1,3 +1,4 @@
+/*
 const express = require('express');
 const app = express();
 
@@ -10,7 +11,33 @@ app.use(express.json());
 // Serve up front-end static content hosting
 app.use(express.static('public'));
 
+// Router for service endpoints
+var apiRouter = express.Router();
+app.use(`/api`, apiRouter);
 
+// GetMessages
+apiRouter.get('/messages', (_req, res) =>  {
+    res.send(messages);
+});
+
+// SubmitMessage
+apiRouter.post('/message', (_req, res) =>  {
+    messages = updateMessages(req.body, messages);
+    res.send(messages);
+});
+
+// Tips
+apiRouter.get('/tips', (_req, res) => {
+    const tips = [];
+    res.send(tips);
+});
+
+apiRouter.get('/about', (_req, res) => {
+    const about = {
+
+    };
+    res.send(about);
+});
 // Return application's default page if path is unknown
 app.use((_req, res) => 
 {
@@ -19,4 +46,13 @@ app.use((_req, res) =>
 
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
-  });  
+  });
+
+  let messages = [];
+  function updateMessages(newMessage, messges)
+  {
+
+  }
+
+  let tips = [];
+*/

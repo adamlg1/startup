@@ -125,7 +125,7 @@ function purpleOld(user, text)
     const paragraph = document.createElement("p");
     paragraph.innerText = user + ": " + text;
     const timeVar = document.createElement('span');
-    timeVar.innerText = "Sent at " + retrieveTheTime();
+    timeVar.innerText = "Sent at " + i.time;
 
     //adds into the DOM lets gooooo
     const messageHolder = document.getElementById("messages");
@@ -143,7 +143,7 @@ function greenOld(user, text)
     const paragraph = document.createElement("p");
     paragraph.innerText = user + ": " + text;
     const timeVar = document.createElement('span');
-    timeVar.innerText = "Sent at " + retrieveTheTime();
+    timeVar.innerText = "Sent at " + i.time;
     const division = document.createElement('div');
     division.className = "anotherSpacerWooo";
 
