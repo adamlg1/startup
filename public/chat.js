@@ -67,9 +67,9 @@ function retrieveTheTime()
 function makeFakeMessage() 
 {
     //Fake Responses lol
-    setTimeout(
-        greenChatBubbleGenerator("Jim-E", "I like to party"),
-        7000);
+    setTimeout(function() {
+        greenChatBubbleGenerator("Jim-E", "I like to party");
+    }, 7000);
 }
 
 //Makes Button work
