@@ -1,4 +1,4 @@
-/*
+
 const express = require('express');
 const app = express();
 
@@ -32,12 +32,7 @@ apiRouter.get('/tips', (_req, res) => {
     res.send(tips);
 });
 
-apiRouter.get('/about', (_req, res) => {
-    const about = {
 
-    };
-    res.send(about);
-});
 // Return application's default page if path is unknown
 app.use((_req, res) => 
 {
@@ -48,11 +43,3 @@ app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
   });
 
-  let messages = [];
-  function updateMessages(newMessage, messges)
-  {
-
-  }
-
-  let tips = [];
-*/
