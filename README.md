@@ -73,6 +73,6 @@ For this deliverable I created a HTTP service to host my frontend and provide ba
 - Node.js/Express HTTP service - done!
 - Static middleware for frontend - done!
 - Calls to third party endpoints - Generates a random featured user on the about page using fetch.
-- Backend service endpoints - Placeholders for login that stores the current user on the server, endpoints for chat and tips.
-- Frontend calls service endpoints - Frontend interacts with messages, tips and message endpoints. 
+- Backend service endpoints - Placeholders for login, endpoints for chat messages and tips.
+- Frontend calls service endpoints - Frontend interacts with messages, tips and message endpoints. Used fetch.
 
