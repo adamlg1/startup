@@ -118,14 +118,14 @@ function greenChatBubbleGenerator(user, text)
 }
 
 
-function purpleOld(user, text) 
+function purpleOld(user, text, time) 
 {
     const message2 = document.createElement("div");
     message2.className = "message2";
     const paragraph = document.createElement("p");
     paragraph.innerText = user + ": " + text;
     const timeVar = document.createElement('span');
-    timeVar.innerText = "Sent at " + i.time;
+    timeVar.innerText = "Sent at " + time;
 
     //adds into the DOM lets gooooo
     const messageHolder = document.getElementById("messages");
@@ -136,14 +136,14 @@ function purpleOld(user, text)
     messageHolder.appendChild(message2);
 }
 
-function greenOld(user, text)
+function greenOld(user, text, time)
 {
     const message1 = document.createElement("div");
     message1.className = "message1";
     const paragraph = document.createElement("p");
     paragraph.innerText = user + ": " + text;
     const timeVar = document.createElement('span');
-    timeVar.innerText = "Sent at " + i.time;
+    timeVar.innerText = "Sent at " + time;
     const division = document.createElement('div');
     division.className = "anotherSpacerWooo";
 
@@ -173,12 +173,12 @@ setInterval(() => {
     {
      if (i.user === userName)
      {
-        purpleOld(i.user, i.text);
+        purpleOld(i.user, i.text, i.time);
      } 
      
      else 
      {
-        greenOld(i.user, i.text);
+        greenOld(i.user, i.text, i.time);
      }
     }
 
