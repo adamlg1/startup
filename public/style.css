@@ -38,3 +38,8 @@ footer a {
       flex: 1 100vh;
     }
   }
+
+  .error-message {
+    color: red;
+    display: none;
+  }
