@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
+
 
 // The service port. Since in production, front-end is statically hosted on the same port.
 const port = 4000;
