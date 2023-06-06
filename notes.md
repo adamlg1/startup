@@ -2682,3 +2682,7 @@ app.listen(port, function () {
   console.log(`Listening on port ${port}`);
 });
 ```
+
+
+### mongodb ###
+- Make sure to make your account an admin. It will save you a world of pain. I didn't figure this out until after the assignment was due, but it made doing simon db super easy.
