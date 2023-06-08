@@ -16,6 +16,31 @@ const userName = localStorage.getItem("userName");
 //Makes the purple chat bubbles :)
 function purpleChatBubbleGenerator(user, text) 
 {
+
+    //create elements
+    const messageObj = 
+    {
+        user: user,
+        text: text,
+        time: retrieveTheTime()
+    };
+
+  // Send the message to the backend
+  fetch("/api/message", {
+    method: "POST",
+    headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(messageObj),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data); // show response from backend
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
     const message2 = document.createElement("div");
     message2.className = "message2";
     const paragraph = document.createElement("p");
@@ -31,6 +56,34 @@ function purpleChatBubbleGenerator(user, text)
     message2.appendChild(timeVar);
     messageHolder.appendChild(message2);
 
+    //push them onto the object
+    storeMessages.push(messageObj);
+
+    //save them in local storage
+    localStorage.setItem("messages", JSON.stringify(storeMessages));
+}
+
+//Makes Green Chat Bubbles
+function greenChatBubbleGenerator(user, text)
+{
+    const message1 = document.createElement("div");
+    message1.className = "message1";
+    const paragraph = document.createElement("p");
+    paragraph.innerText = user + ": " + text;
+    const timeVar = document.createElement('span');
+    timeVar.innerText = "Sent at " + retrieveTheTime();
+    const division = document.createElement('div');
+    division.className = "anotherSpacerWooo";
+
+    //adds into the DOM lets gooooo
+    const messageHolder = document.getElementById("messages");
+
+    //puts them into elements in the DOM so they show up thanks Jim-E
+    message1.appendChild(paragraph);
+    message1.appendChild(timeVar);
+    messageHolder.appendChild(message1);
+    messageHolder.appendChild(division);
+
     //create elements
     const messageObj = 
     {
@@ -38,7 +91,7 @@ function purpleChatBubbleGenerator(user, text)
         text: text,
         time: retrieveTheTime()
     };
-
+    
     //push them onto the object
     storeMessages.push(messageObj);
 
@@ -114,57 +167,6 @@ fetch("/api/messages")
         console.error("Error:", error);
     });
 
-//Makes Green Chat Bubbles
-function greenChatBubbleGenerator(user, text)
-{
-    const message1 = document.createElement("div");
-    message1.className = "message1";
-    const paragraph = document.createElement("p");
-    paragraph.innerText = user + ": " + text;
-    const timeVar = document.createElement('span');
-    timeVar.innerText = "Sent at " + retrieveTheTime();
-    const division = document.createElement('div');
-    division.className = "anotherSpacerWooo";
-
-    //adds into the DOM lets gooooo
-    const messageHolder = document.getElementById("messages");
-
-    //puts them into elements in the DOM so they show up thanks Jim-E
-    message1.appendChild(paragraph);
-    message1.appendChild(timeVar);
-    messageHolder.appendChild(message1);
-    messageHolder.appendChild(division);
-
-    //create elements
-    const messageObj = 
-    {
-        user: user,
-        text: text,
-        time: retrieveTheTime()
-    };
-    
-    //push them onto the object
-    storeMessages.push(messageObj);
-
-    //save them in local storage
-    localStorage.setItem("messages", JSON.stringify(storeMessages));
-
-    // Send the message to the backend
-  fetch("/api/message", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(messageObj),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data); // Log the response from the backend
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-}
 
 
 function purpleOld(user, text, time) 
