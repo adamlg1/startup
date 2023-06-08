@@ -31,6 +31,12 @@ const messagesCollection = db.collection('message');
     }
   }
 
+  async function addMessage(message) {
+    const result = await messagesCollection.insertOne(message);
+    return result;
+  }
+
+
   // ges messages from database
   async function getMessages() {
     try {
