@@ -16,4 +16,31 @@ const messagesCollection = db.collection('message');
     process.exit(1);
   });
 
- 
+//make sure db is ready to add 
+  async function prepDatabase() {
+    try {
+      // Creates message collection if needed
+      const collections = await db.listCollections({ name: 'message' }).toArray();
+      if (collections.length === 0) {
+        await db.createCollection('message');
+        console.log('Initialized the database');
+      }
+    } catch (error) {
+      console.error('Error initializing the database:', error);
+      throw error;
+    }
+  }
+
+  // ges messages from database
+  async function getMessages() {
+    try {
+      const messages = await messagesCollection.find({}).toArray();
+      console.log('got the message:', messages);
+      return messages;
+    } catch (error) {
+      console.error('Error getting message:', error);
+      throw error;
+    }
+  }
+  
+  
