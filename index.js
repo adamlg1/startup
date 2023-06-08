@@ -72,6 +72,10 @@ apiRouter.post('/message',async (req, res) => {
   }
 });
 
+app.use((_req, res) => {
+  res.sendFile('index.html', {root: 'public'});
+});
+
 // Login Placeholder. Interacts with frontend, displays error if left blank
 apiRouter.post('/login', (req, res) => {
   const { username } = req.body;
