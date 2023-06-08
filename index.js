@@ -16,16 +16,15 @@ app.use(express.static('public'));
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// In-memory storage for tips
-let tips = [];
 
 // Tips
-apiRouter.get('/tips', (_req, res) => {
+apiRouter.get('/tips', async (_req, res) => {
+  const tips = await DB.getTips();
   res.json(tips);
 });
 
 // Submit Tip
-apiRouter.post('/tips', (req, res) => {
+apiRouter.post('/tips', async (req, res) => {
   const { userName, content, timestamp } = req.body;
   if (!userName || !content || !timestamp) {
     return res.status(400).json({ message: 'Not a valid tip' });
@@ -36,9 +35,14 @@ apiRouter.post('/tips', (req, res) => {
     content,
     timestamp,
   };
-  tips.push(newTip);
+  
+  try {
+    await DB.addTip(newTip);
+    res.status(200).json({ message: 'Tip added' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed, pain' });
+  }
 
-  res.status(200).json({ message: 'Tip added successfully' });
 });
 
 

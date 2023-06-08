@@ -5,6 +5,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('startup');
 const messagesCollection = db.collection('message');
+const tipsCollection = db.collection('tips');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -49,8 +50,21 @@ const messagesCollection = db.collection('message');
     }
   }
   
-  module.exports = {
-    addMessage,
-    getMessages
-  };
-  
+ 
+//adds tips to db
+async function addTip(tip) {
+  const result = await tipsCollection.insertOne(tip);
+  return result;
+}
+
+//gets tips from db
+async function getTips() {
+  const tips = await tipsCollection.find({}).toArray();
+}
+
+module.exports = {
+  addMessage,
+  getMessages,
+  addTip,
+  getTips
+};
