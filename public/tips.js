@@ -1,4 +1,4 @@
-//OP  tips array for fake database
+//OP  tips array
 let tipsArray;
 if (localStorage.getItem("tipsArray") === null) {
     tipsArray = [];

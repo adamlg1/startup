@@ -66,6 +66,31 @@ function purpleChatBubbleGenerator(user, text)
 //Makes Green Chat Bubbles
 function greenChatBubbleGenerator(user, text)
 {
+  
+    //create elements
+    const messageObj = 
+    {
+        user: user,
+        text: text,
+        time: retrieveTheTime()
+    };
+    
+    // Send the message to the backend
+    fetch("/api/message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(messageObj),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // Log the response from the backend
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+
     const message1 = document.createElement("div");
     message1.className = "message1";
     const paragraph = document.createElement("p");
@@ -84,35 +109,13 @@ function greenChatBubbleGenerator(user, text)
     messageHolder.appendChild(message1);
     messageHolder.appendChild(division);
 
-    //create elements
-    const messageObj = 
-    {
-        user: user,
-        text: text,
-        time: retrieveTheTime()
-    };
-    
     //push them onto the object
     storeMessages.push(messageObj);
 
     //save them in local storage
     localStorage.setItem("messages", JSON.stringify(storeMessages));
 
-    // Send the message to the backend
-  fetch("/api/message", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(messageObj),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data); // Log the response from the backend
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+  
 }
 
 //Gets the text
@@ -148,25 +151,23 @@ sendBtn.addEventListener("click", function ()
     return purpleChatBubbleGenerator(localStorage.getItem("userName"), retrieveTheStupidText()), makeFakeMessage();
 });
 
-// Retrieve messages
-fetch("/api/messages")
-    .then((response) => response.json())
-    .then((data) => {
-        // Handle the response from the backend
-        console.log(data);
-        // Update the UI with the retrieved messages
-        data.forEach((message) => {
-            if (message.user === userName) {
-                purpleOld(message.user, message.text, message.time);
-            } else {
-                greenOld(message.user, message.text, message.time);
-            }
-        });
-    })
-    .catch((error) => {
-        console.error("Error:", error);
-    });
 
+//retrieve messages
+fetch('/api/messages')
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+    data.forEach((message) => {
+      if (message.user === userName) {
+        purpleOld(message.user, message.text, message.time);
+      } else {
+        greenOld(message.user, message.text, message.time);
+      }
+    });
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 
 
 function purpleOld(user, text, time) 

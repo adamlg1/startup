@@ -41,11 +41,10 @@ apiRouter.post('/tips', (req, res) => {
   res.status(200).json({ message: 'Tip added successfully' });
 });
 
-// only pushing them to memory
-let messages = [];
+
 // GetMessages
 apiRouter.get('/messages', async (_req, res) =>  {
-  const messages = await database.getMessages();
+  const messages = await DB.getMessages();
   res.json(messages);
 });
 
@@ -65,7 +64,7 @@ apiRouter.post('/message',async (req, res) => {
   };
 
   try {
-    await database.addMessage(message);
+    await DB.addMessage(message);
     res.status(200).json({ message: 'Message sent to db' });
   } catch (error) {
     res.status(500).json({ message: 'Failed to send to db' });

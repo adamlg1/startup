@@ -49,4 +49,8 @@ const messagesCollection = db.collection('message');
     }
   }
   
+  module.exports = {
+    addMessage,
+    getMessages
+  };
   
