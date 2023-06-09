@@ -6,9 +6,9 @@ const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
 const db = client.db('startup');
+const userCollection = db.collection('user');
 const messagesCollection = db.collection('message');
 const tipsCollection = db.collection('tips');
-const userCollection = db.collection('user');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -41,7 +41,7 @@ const userCollection = db.collection('user');
 
     return user;
   }
-
+/** 
 //make sure db is ready to add 
   async function prepDatabase() {
     try {
@@ -56,7 +56,7 @@ const userCollection = db.collection('user');
       throw error;
     }
   }
-
+*/
   async function addMessage(message) {
     const result = await messagesCollection.insertOne(message);
     return result;

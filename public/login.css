@@ -1,0 +1,19 @@
+loginGroup {
+    border-color: grey;
+    background-color: rgb(55, 61, 81) ;
+    width: 500px; 
+    display: flex;
+    flex: 1;
+
+  }
+
+  .intro {
+    padding-top: 5px;
+    display: flex;
+}
+
+#playerName {
+    color: rgb(77, 187, 218);
+    font-size: 1.5em;
+    padding: 0.5em;
+  }

@@ -20,7 +20,7 @@ main {
     display: flex;
     flex: 1 calc(100vh - 120px);
     flex-direction: column;
-    text-align: center !important;
+    align-items: center;
     justify-content: center;
 }
 
