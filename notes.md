@@ -2686,3 +2686,8 @@ app.listen(port, function () {
 
 ### mongodb ###
 - Make sure to make your account an admin. It will save you a world of pain. I didn't figure this out until after the assignment was due, but it made doing simon db super easy.
+
+### startupDB ###
+- I connected to mongoDB easily, but it was really hard to get the backend and frontend code working.
+- If you have a problem and think everything is there, then check the order of the code. I fixed mine and had no more problems.
+- ChatGPT's code is useless haha. I think it gives good ideas, but the code it writes always has problems, and you regret looking at it in the first place.

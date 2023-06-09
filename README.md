@@ -16,7 +16,7 @@ Have you ever been frustrated by your family’s inability to figure out what is
 - Messages from all users displayed in realtime
 - Ability for a user to submit a tip
 - Messages are persistently stored
-- Ability for admin to delete bad tips
+- Tips are persistently stored
 
 ### Technologies
 
@@ -75,4 +75,13 @@ For this deliverable I created a HTTP service to host my frontend and provide ba
 - Calls to third party endpoints - Generates a random featured user on the about page using fetch.
 - Backend service endpoints - Placeholder for login, endpoints for chat messages and tips.
 - Frontend calls service endpoints - Frontend interacts with messages, tips and message endpoints. Used fetch.
+
+## DB deliverable
+
+For this deliverable I stored and retrieved data from MongoDB.
+
+- **MongoDB Atlas database created** - done!
+- **Endpoints for data** - My stubbed out endpoints now process the data and send it to Mongo.
+- **Stores data in MongoDB** - done!
+
 
