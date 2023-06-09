@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const DB = require('./database.js');
 
+
 const authCookieName = 'token';
 
 
@@ -26,14 +27,14 @@ app.set('trust proxy', true);
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-//CreateAuth token for a new user
+// CreateAuth token for a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  if (await DB.getUser(req.body.email))  {
-    res.status(409).send({msg: 'Existing user'});
-  }  else {
+  if (await DB.getUser(req.body.email)) {
+    res.status(409).send({ msg: 'Existing user' });
+  } else {
     const user = await DB.createUser(req.body.email, req.body.password);
 
-    //set cookie
+    // Set the cookie
     setAuthCookie(res, user.token);
 
     res.send({
@@ -42,31 +43,31 @@ apiRouter.post('/auth/create', async (req, res) => {
   }
 });
 
-//GetAuth token for provided login
+// GetAuth token for the provided credentials
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await DB.getUser(req.body.email);
   if (user) {
-    if(await bcrypt.compare(req.body.password, user.password)) {
+    if (await bcrypt.compare(req.body.password, user.password)) {
       setAuthCookie(res, user.token);
-      res.send({id: user._id});
+      res.send({ id: user._id });
       return;
     }
   }
-  res.status(401).end({msg: 'Unauthorized'});
+  res.status(401).send({ msg: 'Unauthorized' });
 });
 
-//DeleteAuth token if stored in cookie
+// DeleteAuth token if stored in cookie
 apiRouter.delete('/auth/logout', (_req, res) => {
   res.clearCookie(authCookieName);
   res.status(204).end();
 });
 
 //GetUser returns info about user
-apiRouter.get('/user/:email', async(req, res) => {
+apiRouter.get('/user/:email', async (req, res) => {
   const user = await DB.getUser(req.params.email);
   if (user) {
     const token = req?.cookies.token;
-    res.send({ email: user.email, autenticated: token === user.token });
+    res.send({ email: user.email, authenticated: token === user.token });
     return;
   }
   res.status(404).send({ msg: 'Unknown' });
@@ -82,39 +83,9 @@ secureApiRouter.use(async (req, res, next) => {
   if (user) {
     next();
   } else {
-    res.status(401).send({ msg: 'Unauthorized :('});
+    res.status(401).send({ msg: 'Unauthorized' });
   }
 });
-
-
-// Tips
-apiRouter.get('/tips', async (_req, res) => {
-  const tips = await DB.getTips();
-  res.json(tips);
-});
-
-// Submit Tip
-apiRouter.post('/tips', async (req, res) => {
-  const { userName, content, timestamp } = req.body;
-  if (!userName || !content || !timestamp) {
-    return res.status(400).json({ message: 'Not a valid tip' });
-  }
-
-  const newTip = {
-    userName,
-    content,
-    timestamp,
-  };
-  
-  try {
-    await DB.addTip(newTip);
-    res.status(200).json({ message: 'Tip added' });
-  } catch (error) {
-    res.status(500).json({ message: 'Failed, pain' });
-  }
-
-});
-
 
 // GetMessages
 apiRouter.get('/messages', async (_req, res) =>  {
@@ -148,24 +119,34 @@ apiRouter.post('/message',async (req, res) => {
 app.use((_req, res) => {
   res.sendFile('index.html', {root: 'public'});
 });
-/** 
-// Login Placeholder. Interacts with frontend, displays error if left blank
-apiRouter.post('/login', (req, res) => {
-  const { username } = req.body;
 
-  // Check if they typed a username
-  if (!username) {
-    return res.status(400).json({ message: 'username is required' });
+// Tips
+apiRouter.get('/tips', async (_req, res) => {
+  const tips = await DB.getTips();
+  res.json(tips);
+});
+
+// Submit Tip
+apiRouter.post('/tips', async (req, res) => {
+  const { userName, content, timestamp } = req.body;
+  if (!userName || !content || !timestamp) {
+    return res.status(400).json({ message: 'Not a valid tip' });
   }
 
-  const user = {
-    id: 1,
-    username: 'placeholder',
+  const newTip = {
+    userName,
+    content,
+    timestamp,
   };
+  
+  try {
+    await DB.addTip(newTip);
+    res.status(200).json({ message: 'Tip added' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed, pain' });
+  }
 
-  res.json({ user });
 });
-*/
 
 //default error handler (not sure if needed)
 app.use(function (err, req, res, next) {
@@ -179,7 +160,7 @@ app.use((_req, res) => {
 });
 
 //setAuthCookie in HTTP response
-function setAuthCookie (res, authToken) {
+function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     secure: true,
     httpOnly: true,

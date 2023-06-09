@@ -28,19 +28,21 @@ const tipsCollection = db.collection('tips');
     return userCollection.findOne({ token: token });
   }
 
-  async function createUser(email, password) {
-    // hash password before it goes to db
-    const passwordHash = await bcrypt.hash(password, 10);
+async function createUser(email, password) {
+  // Hash the password before we insert it into the database
+  const passwordHash = await bcrypt.hash(password, 10);
 
-    const user = {
-      email: email,
-      password: passwordHash,
-      token:uuid.v4(),
-    };
-    await userCollection.insertOne(user);
+  const user = {
+    email: email,
+    password: passwordHash,
+    token: uuid.v4(),
+  };
+  await userCollection.insertOne(user);
 
-    return user;
-  }
+  return user;
+}
+
+
 /** 
 //make sure db is ready to add 
   async function prepDatabase() {
