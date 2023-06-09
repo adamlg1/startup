@@ -85,3 +85,12 @@ For this deliverable I stored and retrieved data from MongoDB.
 - **Stores data in MongoDB** - done!
 
 
+## Login deliverable
+
+For this deliverable I added user registration and authentication.
+
+- **User registration** - Creates a new account in the database.
+- **existing user** - Verifies the user's name and password from data stored in the database
+- **Use MongoDB to store credentials** - done!
+- **Restricts functionality** - You cannot access the chat or about page without logging in.
+
