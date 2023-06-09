@@ -1,6 +1,10 @@
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 const express = require('express');
 const app = express();
 const DB = require('./database.js');
+
+const authCookieName = 'token';
 
 
 // The service port. Since in production, front-end is statically hosted on the same port.
@@ -9,12 +13,34 @@ const port = 4000;
 //JSON body parsing using built-in middleware
 app.use(express.json());
 
+//Use the cookie parser middleware for tracking auth tokens
+app.use(cookieParser());
+
 // Serve up front-end static content hosting
 app.use(express.static('public'));
+
+//trust headers that are forwarded from the proxy
+app.set('trust proxy', true);
 
 // Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+//CreateAuth token for a new user
+apiRouter.post('/auth/create', async (req, res) => {
+  if (await DB.getUser(req.body.email))  {
+    res.status(409).send({msg: 'Existing user'});
+  }  else {
+    const user = await DB.createUser(req.body.email, req.body.password);
+
+    //set cookie
+    setAuthCookie(res, user.token);
+
+    res.send({
+      id: user._id,
+    });
+  }
+});
 
 
 // Tips
