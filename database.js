@@ -69,7 +69,7 @@ async function createUser(email, password) {
   async function getMessages() {
     try {
       const messages = await messagesCollection.find({}).toArray();
-      console.log('got the message:', messages);
+      // console.log('got the message:', messages);
       return messages;
     } catch (error) {
       console.error('Error getting message:', error);

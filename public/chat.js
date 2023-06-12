@@ -1,3 +1,19 @@
+// Adjust the webSocket protocol to what is being used for HTTP
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+
+// Display that we have opened the webSocket
+socket.onopen = (event) => {
+  //appendMsg('system', 'websocket', 'connected');
+  //sends active users to socket
+socket.send(JSON.stringify({"userName": userName, 'type': 'person'}));
+};
+
+
+
+
+
+
 //fake database
 let storeMessages;
 if (JSON.parse(localStorage.getItem("messages")) === null) {
@@ -24,7 +40,8 @@ function purpleChatBubbleGenerator(user, text)
         text: text,
         time: retrieveTheTime()
     };
-
+    console.log("attempting to send websocket");
+    sendMessage(messageObj);
   // Send the message to the backend
   fetch("/api/message", {
     method: "POST",
@@ -136,19 +153,19 @@ function retrieveTheTime()
     return `${hours}:${minutes}`;
 }
 
-function makeFakeMessage() 
-{
-    //Fake Responses lol
-    setTimeout(function() {
-        greenChatBubbleGenerator("Jim-E", "I like to party");
-    }, 7000);
-}
+// function makeFakeMessage() 
+// {
+//     //Fake Responses lol
+//     setTimeout(function() {
+//         greenChatBubbleGenerator("Jim-E", "I like to party");
+//     }, 7000);
+// }
 
 //Makes Button work
 const sendBtn = document.getElementById("send");
 sendBtn.addEventListener("click", function ()
 {
-    return purpleChatBubbleGenerator(localStorage.getItem("userName"), retrieveTheStupidText()), makeFakeMessage();
+    return purpleChatBubbleGenerator(localStorage.getItem("userName"), retrieveTheStupidText());
 });
 
 
@@ -209,14 +226,36 @@ function greenOld(user, text, time)
     messageHolder.appendChild(division);
 }
 
-//Generates an active user every 10 seconds. Go Joe Ingles
-setInterval(() => {
-    const chatText = document.querySelector('#active-status');
+//receives websocket message
+socket.onmessage = async (event) => {
+
+  const text = await event.data.text();
+
+  const chat = JSON.parse(text);
+
+  if (chat.type === "person") {
+    generatePerson(chat.userName);
+  } else {
+  greenChatBubbleGenerator(chat.user, chat.text);
+  }
+
+};
+
+//generate live person
+function generatePerson(userName) {
+  const chatText = document.querySelector('#active-status');
     chatText.innerHTML =
-      `<div class="event"><span class="user-name">Joe</span> is active</div>` + chatText.innerHTML;
-  }, 10000);
+      `<div class="event"><span class="user-name">${userName}</span> has joined the chat</div>` + chatText.innerHTML;
+}
 
+//send websocket message
+function sendMessage(msgObject) {
+  const msgEl = document.querySelector('#typed-message');
+  const msg = msgEl.value;
+  socket.send(JSON.stringify(msgObject));
+}
 
+/** 
   //generates the previous messages
   function generatePreviousMessages() 
   {
@@ -237,4 +276,4 @@ setInterval(() => {
 }
 
 generatePreviousMessages();
-
+*/
