@@ -91,22 +91,6 @@ function greenChatBubbleGenerator(user, text)
         text: text,
         time: retrieveTheTime()
     };
-    
-    // Send the message to the backend
-    fetch("/api/message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(messageObj),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data); // Log the response from the backend
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
 
     const message1 = document.createElement("div");
     message1.className = "message1";
