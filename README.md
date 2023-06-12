@@ -14,25 +14,26 @@ Have you ever been frustrated by your family’s inability to figure out what is
 
 - Secure login over HTTPS
 - Messages from all users displayed in realtime
-- Ability for a user to submit a tip
-- Messages are persistently stored
-- Tips are persistently stored
+- Messages are persistently stored in the database
+- There is a featured user through a third party fetch.
+- When a user joins the chat, it is broadcasted in real time.
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Uses correct HTML structure for application. Four HTML pages. One for login, tips, chat, and an informational about page. Hyperlinks through a consistent header.
+- **HTML** - Uses correct HTML structure for application. Three HTML pages. One for login, chat, and an informational about page. Hyperlinks through a consistent header.
 - ***Javascript*** - Uses Javascript for buttons and navigation to work.
 - **CSS** - Application styling that looks good on different screen sizes, uses good whitespace, color choice and contrast.
-- **DB** - Store users, messages, and tips in database.
-- **Login** - Register and login users. Credentials securely stored in database. Can't chat or add tips without authentication.
-- **WebSocket** - Peer to peer communication through chatting with friends through the browser, and the ability to submit a tip that is broadcasted for others to see.
+- **DB** - Store users and messages in database.
+- **Login** - Register and login users. Credentials securely stored in database. Can't chat without authentication.
+- **WebSocket** - Peer to peer communication through chatting with friends through the browser.
 - **Service** - Backend service with endpoints for:
 - login
 - retrieving messages
-- retrieving tips
-
+- submitting messages
+- **Websocket** - As messages are sent, they show up in real time. When another user joins the chat, other users are able to see.
+- **React** - 
 
 ## HTML deliverable
 
@@ -92,5 +93,14 @@ For this deliverable I added user registration and authentication.
 - **User registration** - Creates a new account in the database.
 - **existing user** - Verifies the user's name and password from data stored in the database
 - **Use MongoDB to store credentials** - done!
-- **Restricts functionality** - You cannot access the chat or about page without logging in.
+- **Restricts functionality** - You cannot access the chat page without logging in.
+
+## WebSocket deliverable
+
+For this deliverable I enabled realtime messaging of users. Users are also notified when another user joins the chat. I ended up removing the tips section due to a lack of time to complete it, with the message tab fulfilling all the requirements.
+
+- **Backend listens for WebSocket connection** - done!
+- **Frontend makes WebSocket connection** - done!
+- **Data sent over WebSocket connection** - done!
+- **WebSocket data displayed** - All user messages display in realtime
 
