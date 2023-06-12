@@ -2691,3 +2691,7 @@ app.listen(port, function () {
 - I connected to mongoDB easily, but it was really hard to get the backend and frontend code working.
 - If you have a problem and think everything is there, then check the order of the code. I fixed mine and had no more problems.
 - ChatGPT's code is useless haha. I think it gives good ideas, but the code it writes always has problems, and you regret looking at it in the first place.
+
+### startup websocket ###
+- It is good to have friends to help.
+- I ended up deciding to not do the tips section.
