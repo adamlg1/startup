@@ -9,11 +9,6 @@ socket.onopen = (event) => {
 socket.send(JSON.stringify({"userName": userName, 'type': 'person'}));
 };
 
-
-
-
-
-
 //fake database
 let storeMessages;
 if (JSON.parse(localStorage.getItem("messages")) === null) {
