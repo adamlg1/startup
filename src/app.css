@@ -10,7 +10,7 @@ nav.button {
     align-items: right;
 }
 
-body {
+.app {
     display: flex;
     flex-direction: column;
     min-width: 375px;
@@ -38,4 +38,8 @@ footer a {
       flex: 1 100vh;
     }
   }
-
+  .title {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+  }
