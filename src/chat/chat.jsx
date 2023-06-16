@@ -3,17 +3,18 @@ import './chat.css';
 
 
 export function Chat() {
+  
   return (
-<main class="bg-light">
+<main className="bg-light">
     <span className="chat-title"><h1>Live Chat</h1></span>
 
     
     <div className="users">
       User:
-      <span class="user-title"></span>
+      <span className="user-title"></span>
       <div></div>
-      <span class="active-title"> Others Active:</span>
-      <div class="active-status" id="active-status">
+      <span className="active-title"> Others Active:</span>
+      <div className="active-status" id="active-status">
       </div>
     </div>
 
