@@ -5,7 +5,7 @@ import './app.css';
 import { Navbar, Nav } from 'react-bootstrap'; // Import Navbar and Nav from react-bootstrap
 import { Login } from './login/login';
 import { About } from './about/about';
-import Chat from './chat/chat'; // Import the Chat component
+import Chat from './chat/chat'; 
 import { AuthState } from './login/authState';
 
 

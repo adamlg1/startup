@@ -11,14 +11,18 @@ const Chat = () => {
 
   const retrieveTheTime = () => {
     const date = new Date();
-  
-    const hours = String(date.getHours()).padStart(2, '0');
+
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear());
+    let hours = date.getHours();
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
-  
-    return `${hours}:${minutes}:${seconds}`;
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12;
+
+    return `${day}/${month}/${year}, ${hours}:${minutes}:${seconds} ${amPm}`;
   };
-  
 
   async function fetchChatMessages() {
     try {
@@ -34,14 +38,14 @@ const Chat = () => {
       console.error('Error fetching chat messages:', error);
     }
   }
-  
+
   async function sendChatMessage(user, message) {
     const requestBody = {
       user: user,
       text: message,
       time: new Date().toLocaleString(),
     };
-  
+
     try {
       await fetch('/api/message', {
         method: 'POST',
@@ -50,14 +54,13 @@ const Chat = () => {
         },
         body: JSON.stringify(requestBody),
       });
-  
+
       // Refresh the chat messages after sending the new message
       fetchChatMessages();
     } catch (error) {
       console.error('Error sending chat message:', error);
     }
   }
-  
 
   const handleSendChatMessage = () => {
     sendChatMessage(userName, typedMessage);
@@ -65,7 +68,7 @@ const Chat = () => {
     const messageObj = {
       user: userName,
       text: typedMessage,
-      time: retrieveTheTime()
+      time: retrieveTheTime(),
     };
 
     setStoreMessages((prevMessages) => [...prevMessages, messageObj]);
@@ -80,42 +83,48 @@ const Chat = () => {
 
   return (
     <main className="bg-light">
-      <span className="chat-title"><h1>Live Chat</h1></span>
-
-      <div className="users">
-        User:
-        <span className="user-title"></span>
-        <div></div>
-        <span className="active-title"> Others Active:</span>
-        <div className="active-status" id="active-status"></div>
-      </div>
+      <span className="chat-title">
+        <h1>Live Chat</h1>
+      </span>
 
       <div id="messages" className="message-container">
-        <span className="message-title"><h1>Messages:</h1></span>
-        <div className="anotherSpacerWooo"></div>
-        {storeMessages.map((message, index) => (
-          message.user === userName
-            ? (
-              <div className="message2" key={index}>
-                <p>{message.user}: {message.text}</p>
-                <span>Sent at {message.time}</span>
-              </div>
-            )
-            : (
-              <>
-                <div className="message1" key={index}>
-                  <p>{message.user}: {message.text}</p>
-                  <span>Sent at {message.time}</span>
-                </div>
-                <div className="anotherSpacerWooo" />
-              </>
-            )
-        ))}
+        <span className="message-title">
+          <h1>Messages:</h1>
+        </span>
+        <div className="anotherSpacerWooo" />
+        {storeMessages.map((message, index) =>
+          message.user === userName ? (
+            // purple
+            <div className="message2" key={`${message.time}-${index}`}>
+              <p>
+                {message.user}: {message.text}
+              </p>
+              <span>Sent at {message.time}</span>
+            </div>
+          ) : (
+            // green
+            <div className="message1" key={`${message.time}-${index}`}>
+              <p>
+                {message.user}: {message.text}
+              </p>
+              <span>Sent at {message.time}</span>
+            </div>
+          )
+        )}
       </div>
 
       <div className="chat-input">
-        <input type="text" id="typed-message" name="varText" placeholder="type message here" value={typedMessage} onChange={(e) => setTypedMessage(e.target.value)} />
-        <button id="send" onClick={handleSendChatMessage}>send</button>
+        <input
+          type="text"
+          id="typed-message"
+          name="varText"
+          placeholder="type message here"
+          value={typedMessage}
+          onChange={(e) => setTypedMessage(e.target.value)}
+        />
+        <button id="send" onClick={handleSendChatMessage}>
+          send
+        </button>
       </div>
     </main>
   );
