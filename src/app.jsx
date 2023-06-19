@@ -41,8 +41,9 @@ export default function App() {
 
   <Navbar.Collapse id="navbarText">
     <Nav className="me-auto">
-      <Nav.Link as={NavLink} exact to="/" activeClassName="active">Home</Nav.Link>
-      <Nav.Link as={NavLink} to="/about" activeClassName="active">About</Nav.Link>
+    <Nav.Link as={NavLink} exact="true" to="/" activeclassname="active">Home</Nav.Link>
+<Nav.Link as={NavLink} to="/about" activeclassname="active">About</Nav.Link>
+
     </Nav>
   </Navbar.Collapse>
 </Navbar>
