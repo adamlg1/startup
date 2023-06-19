@@ -2695,3 +2695,9 @@ app.listen(port, function () {
 ### startup websocket ###
 - It is good to have friends to help.
 - I ended up deciding to not do the tips section.
+
+- 
+### startup react ###
+- Sometimes you just need to read the debug console more closely.
+- I messed up by not looking at my debug console haha.
+- React is good, but takes a learnign curve.
