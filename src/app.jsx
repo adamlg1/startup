@@ -5,10 +5,8 @@ import './app.css';
 import { Navbar, Nav } from 'react-bootstrap'; // Import Navbar and Nav from react-bootstrap
 import { Login } from './login/login';
 import { About } from './about/about';
-import { Chat } from './chat/chat';
-
-
-
+import Chat from './chat/chat'; // Import the Chat component
+import { AuthState } from './login/authState';
 
 
 function NotFound() {
@@ -17,6 +15,9 @@ function NotFound() {
 
 
 export default function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
   return (
     <BrowserRouter>
     <div className="app">
@@ -51,7 +52,20 @@ export default function App() {
 
 
 <Routes>
-        <Route path='/' element ={<Login />} exact />
+<Route
+            path='/'
+            element={
+              <Login
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+              />
+            }
+            exact
+          />
         <Route path='/chat' element={<Chat />} />
         <Route path='/about' element={<About />} />
         <Route path='*' element={<NotFound />} />

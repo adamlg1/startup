@@ -8,7 +8,6 @@ const client = new MongoClient(url);
 const db = client.db('startup');
 const userCollection = db.collection('user');
 const messagesCollection = db.collection('message');
-const tipsCollection = db.collection('tips');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -42,23 +41,6 @@ async function createUser(email, password) {
   return user;
 }
 
-
-/** 
-//make sure db is ready to add 
-  async function prepDatabase() {
-    try {
-      // Creates message collection if needed
-      const collections = await db.listCollections({ name: 'message' }).toArray();
-      if (collections.length === 0) {
-        await db.createCollection('message');
-        console.log('Initialized the database');
-      }
-    } catch (error) {
-      console.error('Error initializing the database:', error);
-      throw error;
-    }
-  }
-*/
   async function addMessage(message) {
     const result = await messagesCollection.insertOne(message);
     return result;
@@ -77,17 +59,6 @@ async function createUser(email, password) {
     }
   }
   
- 
-//adds tips to db
-async function addTip(tip) {
-  const result = await tipsCollection.insertOne(tip);
-  return result;
-}
-
-//gets tips from db
-async function getTips() {
-  const tips = await tipsCollection.find({}).toArray();
-}
 
 module.exports = {
   getUser,
@@ -95,6 +66,5 @@ module.exports = {
   createUser,
   addMessage,
   getMessages,
-  addTip,
-  getTips,
+  messagesCollection,
 };
