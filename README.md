@@ -16,7 +16,7 @@ Have you ever been frustrated by your family’s inability to figure out what is
 - Messages from all users displayed in realtime
 - Messages are persistently stored in the database
 - There is a featured user through a third party fetch.
-- When a user joins the chat, it is broadcasted in real time.
+- When a user joins the chat, it is broadcasted in real time(not featured in react version).
 
 ### Technologies
 
@@ -33,7 +33,7 @@ I am going to use the required technologies in the following ways.
 - retrieving messages
 - submitting messages
 - **Websocket** - As messages are sent, they show up in real time. When another user joins the chat, other users are able to see.
-- **React** - 
+- **React** - Implemented app in react.
 
 ## HTML deliverable
 
@@ -103,4 +103,14 @@ For this deliverable I enabled realtime messaging of users. Users are also notif
 - **Frontend makes WebSocket connection** - done!
 - **Data sent over WebSocket connection** - done!
 - **WebSocket data displayed** - All user messages display in realtime
+
+
+## React deliverable
+
+For this deliverable I converted the application over to use react.
+
+- **Bundled and transpiled** - done!
+- **Components** - Login, chat page, about are all components.
+- **Router** - Routing between login, chat, and about components.
+- **Hooks** - useState and useEffect hooks are used in chat.jsx.
 
