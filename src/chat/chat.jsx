@@ -8,10 +8,11 @@ const Chat = () => {
   });
   const [userName, setUserName] = useState(localStorage.getItem('userName'));
   const [typedMessage, setTypedMessage] = useState('');
+  const [socket, setSocket] = useState(null);
 
   const retrieveTheTime = () => {
     const date = new Date();
-  
+
     const day = String(date.getDate());
     const month = String(date.toLocaleString('default', { month: 'long' }));
     const year = String(date.getFullYear());
@@ -20,12 +21,11 @@ const Chat = () => {
     const seconds = String(date.getSeconds()).padStart(2, '0');
     const amPm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12 || 12;
-  
+
     return `${month} ${day}, ${year}, ${hours}:${minutes}:${seconds} ${amPm}`;
   };
-  
 
-  async function fetchChatMessages() {
+  const fetchOldChatMessages = async () => {
     try {
       const response = await fetch('/api/messages');
       if (response.ok) {
@@ -38,7 +38,38 @@ const Chat = () => {
     } catch (error) {
       console.error('Error fetching chat messages:', error);
     }
-  }
+  };
+
+  useEffect(() => {
+    fetchOldChatMessages();
+  }, []);
+
+  useEffect(() => {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    const newSocket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    setSocket(newSocket);
+
+    newSocket.onopen = (event) => {
+      newSocket.send(JSON.stringify({ userName: userName, type: 'person' }));
+    };
+
+    newSocket.addEventListener('message', (event) => {
+      event.data.text().then((messageText) => {
+        const message = JSON.parse(messageText);
+        setStoreMessages((prevMessages) => {
+          const updatedMessages = [...prevMessages, message];
+          localStorage.setItem('messages', JSON.stringify(updatedMessages));
+          return updatedMessages;
+        });
+      }).catch((error) => {
+        console.error('Error parsing WebSocket message:', error);
+      });
+    });
+
+    return () => {
+      newSocket.close();
+    };
+  }, [userName]);
 
   async function sendChatMessage(user, message) {
     const requestBody = {
@@ -46,6 +77,8 @@ const Chat = () => {
       text: message,
       time: new Date().toLocaleString(),
     };
+
+    socket.send(JSON.stringify(requestBody));
 
     try {
       await fetch('/api/message', {
@@ -55,32 +88,29 @@ const Chat = () => {
         },
         body: JSON.stringify(requestBody),
       });
-
-      // Refresh the chat messages after sending the new message
-      fetchChatMessages();
     } catch (error) {
       console.error('Error sending chat message:', error);
     }
+
+    setTypedMessage('');
   }
 
   const handleSendChatMessage = () => {
-    sendChatMessage(userName, typedMessage);
+    if (typedMessage.trim() !== '') { // Check if the typed message is not empty
+      sendChatMessage(userName, typedMessage);
 
-    const messageObj = {
-      user: userName,
-      text: typedMessage,
-      time: retrieveTheTime(),
-    };
+      const messageObj = {
+        user: userName,
+        text: typedMessage,
+        time: retrieveTheTime(),
+      };
 
-    setStoreMessages((prevMessages) => [...prevMessages, messageObj]);
-    localStorage.setItem('messages', JSON.stringify(storeMessages.concat(messageObj)));
+      setStoreMessages((prevMessages) => [...prevMessages, messageObj]);
+      localStorage.setItem('messages', JSON.stringify([...storeMessages, messageObj]));
 
-    setTypedMessage('');
+      setTypedMessage('');
+    }
   };
-
-  useEffect(() => {
-    fetchChatMessages();
-  }, []);
 
   return (
     <main className="bg-light">
@@ -95,7 +125,6 @@ const Chat = () => {
         <div className="anotherSpacerWooo" />
         {storeMessages.map((message, index) =>
           message.user === userName ? (
-            // purple
             <div className="message2" key={`${message.time}-${index}`}>
               <p>
                 {message.user}: {message.text}
@@ -103,13 +132,14 @@ const Chat = () => {
               <span>Sent at {message.time}</span>
             </div>
           ) : (
-            // green
-            <div className="message1" key={`${message.time}-${index}`}>
-              <p>
-                {message.user}: {message.text}
-              </p>
-              <span>Sent at {message.time}</span>
-            </div>
+            message.type !== 'person' && (
+              <div className="message1" key={`${message.time}-${index}`}>
+                <p>
+                  {message.user}: {message.text}
+                </p>
+                <span>Sent at {message.time}</span>
+              </div>
+            )
           )
         )}
       </div>

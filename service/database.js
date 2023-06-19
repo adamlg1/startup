@@ -66,5 +66,4 @@ module.exports = {
   createUser,
   addMessage,
   getMessages,
-  messagesCollection,
 };
