@@ -1,4 +1,101 @@
+### TEST 2 Notes ###
+## Kahoot ##
+- Port 80 is HTTP
+- 443 is HTTPS
+- HTTP codes in 300s are reserved for Content redirects or caching
+- Which is NOT an HTTP header  LANGUAGE
+- These are HTTP headers Content-Type
+Host
+Cookie
+- Cookies Allow A server to store data on the client
+- For the request GET/fav/george what is logged
+- app.use(function (req, res, next) {
+- console.log('paul');
+- next();
+- });
+- app.put('/fav/:person', (req, res, next) => {
+- console.log('ringo');
+- next();
+- });
+- ap.get('/fav/:person', (req, res, next) => {
+- console.log(req.params.person);
+- next();
+- });
+- app.get('/*', (req,res, next) {
+- console.log('john');
+- next();
+- });
+- paul george john
+- NEW Q const r = await (fetch('fav/ringo', { method: 'DELETE' });
+- Which express middleware matches this request A app.delete (/fav\/(.*)/,())=>{})
+- { $or: [{name:/J.*/}, {score: {$lt:3}}}} Walke score --55
+- Hashing is important to make password unreadable
+- Const { WebSocketServer } = require(‘ws’);
+Const wss = new WebSocketServer({ port: 9900 });
+Wss.on(‘connection’, (ws) => {
+Ws.on(‘message’, (data) => {
+Const msg = String.fromCharCode(…data);
+Ws.send(‘Server:$Server:${msg}`);
+});
+});
+//executed on browser
+Const socket = new WebSocket(‘ws://localhost:9900);
+Socket.onmessage = (event) => {
+Console.log(`Client:${event.data}`);
+};
+Socket.send(Hello);
+- console log prints Client:Server:Hello
+- Websocket doesn't run using Token Ring, it doesn't use proof of work to show security, it doesn't remove the need to keep a connection open
+- Websocket is peer to peer instead of client to server
+- JSX does not combine CSS HTML and JS
+- JSX does allow you to inject your HTML into your JS, allows you to componentize your HTML, and allows for composability of your HTML
+- Which is not true about a LInux Daemon
+- Daemon cannot fork other processees (It can)
+- PM2 is an example of a Daemon, Daemon starts when pc is rebooted, and executes independent of a user
+- You can use fetch in front and backend code
+- npm install ws doesn not add template code for websockets to your JS
+- But npm install ws does lock the version of the websocket package for your app, adds the websocket source code to the node_modules directory, and adds a dependency to your package.json file
+- <BrowserRouter>
+<div className=’app’>
+<nav>
+<NavLink to=’/’>A</NavLink>
+<NavLink to=’/burger/>C</NavLink>
+</nav>
 
+<main>
+<Routes>
+<Route path=’/’  element={<A />} exact />
+<Route path=’/burger’ element={<B />} />
+<Route path=’*’ element={<C />}/>
+</Routes>
+</main>
+</div>
+</BrowserRouter>
+- URL `/burger` will render B
+
+
+   - const B = () => <b>burger</b>; const C =>() <b>fish</b>; const D =>() <b>taco</b>; const A = () => { const [v, updateV] = React.useState(false);   const [x, update] = React.useState(B);
+Let 0 = <C />;
+If (v) {
+O = <B/>; }          React.useEffect(() => updateX(D), [v]);
+Return (
+<p onClick={() => update(true)}>{x}{o}</p>
+); };
+- Component A will initially display tacofish
+
+NONIIN 
+
+- Default is an and in mongodb queries
+- by default fetch is get
+- port 80 is http
+- 443 https
+- 22 is ssh
+- http in 300 is for redirect
+- 100 is info
+- 200 is success
+- 400 is error
+- 500 is server error
+- Get request ignores put
 ### Github assignment ###
    #### Things I learned ####
    * Make sure to use the git bash terminal
